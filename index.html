@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Data Visualisation</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>What social platform has influenced your online shopping most?</h1>
+  <div class="checkboxes">
+    <div class="checkbox">
+      <input type="checkbox" id="male_voters_checkbox" checked onclick="updateBars()">
+      <label for="male_voters_checkbox">Male Voters</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="female_voters_checkbox" checked onclick="updateBars()">
+      <label for="female_voters_checkbox">Female Voters</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="facebook_checkbox" checked onclick="updateBars()">
+      <label for="facebook_checkbox">Facebook</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="instagram_checkbox" checked onclick="updateBars()">
+      <label for="instagram_checkbox">Instagram</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="snapchat_checkbox" checked onclick="updateBars()">
+      <label for="snapchat_checkbox">Snapchat</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="twitter_checkbox" checked onclick="updateBars()">
+      <label for="twitter_checkbox">Twitter</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="none_checkbox" checked onclick="updateBars()">
+      <label for="none_checkbox">None</label>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div id="tooltip" class="hidden">
+    <p><strong id="platform_name">Platform</strong></p>
+    <p><span id="value">100</span></p>
+  </div>
+  <svg class="chart"></svg>
+</div>
+
+<div class="descriptioncontainer">
+  <h2>Data processing</h2>
+  <p>The original dataset showcasing the full data was created by Adam Halper and downloaded from data.world.
+    The link to the dataset can be found <a href="https://data.world/ahalps/social-influence-on-shopping">here</a>.</p>
+  <p>When inspecting the original dataset, there were a lot of rows (1452) where majority of them could not be used
+  as none of the segment groups except 'male voters' and 'female voters' described the distribution of male and female
+  voters. To deal with this, python code was written to remove all the rows which didn't have the segment groups
+    'male voters' and 'female voters' so that the dataset could be inspected properly to see the total count of
+  the two genders. After realising that there was an imbalance in numbers between the two genders, the total count
+  column was disregarded as percentage was a better measure.</p>
+  <p>Following these steps, there were only 10 rows of data remaining where the only meaningful columns were the
+  segment description showing the gender, the social media platform answer and the percentage column. As there was not
+  a strenuous amount of data and relatively easy to structure in a hierarchical manner, the data was formatted into a JSON format within
+  the code where each gender category has an array of objects that specifies the platform and its corresponding percentage.</p>
+  <p></p>
+  <p>The JSON format is more structured than CSV whilst allowing for nested data and supports more complex data types, such as arrays and objects.
+    This makes it easier to represent the hierarchical structure of the data. In addition, JSON has built-in support for key-value pairs making
+    it easy to work with in JavaScript and requires less parsing and manipulating than CSV to achieve the same effect. </p>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+
