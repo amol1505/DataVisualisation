@@ -132,7 +132,7 @@ bars
         parseFloat(this.platformPercentage * 100).toFixed(1) +
         "% of " +
         this.gender +
-        " voters chose this option"
+        " voters chose this platform"
       );
 
     d3.select("#tooltip").select("#platform_name").text(tooltipPlatform);
